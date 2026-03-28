@@ -5,8 +5,66 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BaiTapClass_DuAnMau_ThietKeDam.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+                     d:DesignHeight="150" d:DesignWidth="800">
+
     <Grid>
-            
+        <Ribbon>
+            <RibbonTab Header="File">
+                <RibbonGroup >
+                    <RibbonButton Label="Tạo mới file" LargeImageSource="/Assets/Icons/addfile.png"/>
+                </RibbonGroup>
+
+                <RibbonGroup >
+                    <RibbonButton Label="Mở file" LargeImageSource="/Assets/Icons/oppenfile.png"/>
+                </RibbonGroup>
+
+                <RibbonGroup >
+                    <RibbonButton Label="Lưu file" LargeImageSource="/Assets/Icons/save.png"/>
+                </RibbonGroup>
+
+            </RibbonTab>
+            <RibbonTab Header="Dữ Liệu">
+                <RibbonGroup Header="Etabs">
+                    <RibbonButton Label="Etabs" LargeImageSource="/Assets/Icons/Add Link.png"/>
+                </RibbonGroup>
+
+                <RibbonGroup >
+                    <RibbonButton Label="Vật liệu" LargeImageSource="/Assets/Icons/vatlieu.png"/>
+                </RibbonGroup>
+
+                <RibbonGroup >
+                    <RibbonButton Label="Tiêu chuẩn thiết kế" />
+                </RibbonGroup>
+                <RibbonGroup >
+                    <RibbonButton Label="Thông số thiết kế"/>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab Header="Thiết kế">
+                <RibbonGroup >
+                    <RibbonButton Label="Dầm" LargeImageSource="/Assets/Icons/Add Link.png"/>
+                </RibbonGroup>
+
+                <RibbonGroup Header="Kiểm tra" >
+                    <RibbonButton Label="TTGH I" />
+                    <RibbonButton Label="TTGH II" />
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab Header="Báo cáo">
+
+
+                <RibbonGroup Header="Xuất báo cáo" >
+                    <RibbonButton Label="PDF" LargeImageSource="/Assets/Icons/pdf.png" />
+                    <RibbonButton Label="Excel" LargeImageSource="/Assets/Icons/excel.png" />
+                    <RibbonButton Label="Word" LargeImageSource="/Assets/Icons/word.png" />
+                </RibbonGroup>
+
+                <RibbonGroup >
+                    <RibbonButton Label="In ấn" LargeImageSource="/Assets/Icons/in.png"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
     </Grid>
 </UserControl>
