@@ -24,5 +24,10 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4
         {
             InitializeComponent();
         }
+
+        private void btnTinhToanDam_Click(object sender, RoutedEventArgs e)
+        {
+            dtg_BeamList.Items.Refresh();
+        }
     }
 }

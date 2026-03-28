@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
         <!--1. Nhập liệu dầm-->
         <Grid x:Name="GridA1" ShowGridLines="True">
             <Grid.ColumnDefinitions>
@@ -25,32 +25,35 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!--Nhập liệu thông tin dầm-->
             <GroupBox Header="Thông tin" Grid.Column="0">
                 <StackPanel Orientation="Vertical">
-                    
+                    <StackPanel Orientation="Horizontal" Margin="5"  >
+                        <Label Content="Mã hiệu:"/>
+                        <TextBox x:Name="txtMark" Width="100" Margin="5 0 0 0" Text="{Binding Mark}"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5"  >
                         <Label Content="b:"/>
-                        <TextBox x:Name="txtb" Width="100" Margin="5 0 0 0" Text="{Binding CurrentBeam.b}"/>
+                        <TextBox x:Name="txtb" Width="100" Margin="40 0 0 0" Text="{Binding b}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
                         <Label Content="h:"/>
                         <TextBox x:Name="txth" 
-                                 Text="{Binding CurrentBeam.h}"
-                                 Width="100" Margin="5 0 0 0"/>
+                             Text="{Binding h}"
+                             Width="100" Margin="40 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
                         <Label Content="a:"/>
                         <TextBox x:Name="txta" 
-                                 Text="{Binding CurrentBeam.a}"
-                                 Width="100" Margin="5 0 0 0"/>
+                             Text="{Binding a}"
+                             Width="100" Margin="40 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
                         <Label Content="M:" ToolTip="Nhập Mômen" />
                         <TextBox x:Name="txtM"
-                                 Text="{Binding CurrentBeam.M}"
-                                 Width="100" />
+                             Text="{Binding M}"
+                             Width="100" Margin="35 0 0 0"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -61,23 +64,23 @@
                     <StackPanel Orientation="Horizontal" Margin="5"  >
                         <Label Content="Bê tông:"/>
                         <ComboBox x:Name="cmb_BeTong" 
-                                  ItemsSource="{Binding Path=ConcreteMaterialList}"
-                                  DisplayMemberPath="Name"
-                                  SelectedItem="{Binding CurrentBeam.ConcreteMaterial}"
-                                  Width="80" 
-                                  Margin="5 0 0 0" SelectedIndex="1" >
-                          
-                            
+                              ItemsSource="{Binding Path=ConcreteMaterialList}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding ConcreteMaterial}"
+                              Width="80" 
+                              Margin="5 0 0 0" SelectedIndex="1" >
+
+
                         </ComboBox>
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" Margin="5"  >
                         <Label Content="Cốt thép:"/>
                         <ComboBox x:Name="cmb_CotThep" Width="80" 
-                                  ItemsSource="{Binding Path=RebarMaterialList}"
-                                  DisplayMemberPath="Name"
-                                  SelectedItem="{Binding CurrentBeam.RebarMaterial}"
-                                  SelectedIndex="1" >
+                              ItemsSource="{Binding Path=RebarMaterialList}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding RebarMaterial}"
+                              SelectedIndex="1" >
                         </ComboBox>
                     </StackPanel>
 
@@ -98,13 +101,15 @@
                 </StackPanel>
             </GroupBox>
         </Grid>
-        
+
         <!--2. Danh sách quản lý dầm-->
-        <DataGrid Grid.Row="1" ItemsSource="{Binding BeamList}" 
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="False" Margin="10">
+        <DataGrid x:Name="dtg_BeamList" Grid.Row="1" ItemsSource="{Binding BeamList, IsAsync=True}" 
+              SelectedItem="{Binding CurrentBeam, Mode=TwoWay}"
+              AutoGenerateColumns="False" 
+              CanUserAddRows="False" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" />
+                <DataGridTextColumn Header="Mã hiệu" Binding="{Binding Mark}" />
                 <DataGridTextColumn Header="b" Binding="{Binding b}" />
                 <DataGridTextColumn Header="h" Binding="{Binding h }" />
                 <DataGridTextColumn Header="a" Binding="{Binding a}" />
@@ -135,8 +140,9 @@
 
         <!--3. Nút chức năng-->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnThemDam" Command="{Binding AddBeamCommand}" Content="Thêm dầm" Width="100"  Height="30" />
-            <Button x:Name="btnTinhToanDam" Content="Tính toán"  Command="{Binding CalBeamCommand}" Width="100" Margin="100 0 0 0" Height="30" />
+            <Button x:Name="btnThemDam" Command="{Binding AddBeamCommand}" Content="Thêm dầm" Width="100"  Height="30"  />
+            <Button x:Name="btnXoaDam" Command="{Binding RemoveBeamCommand}" Content="Xóa dầm" Width="100"  Height="30"  Margin="50 0 0 0" />
+            <Button x:Name="btnTinhToanDam" Content="Tính toán"  Command="{Binding CalBeamCommand}" Width="100" Margin="50 0 0 0" Height="30" Click="btnTinhToanDam_Click" />
         </StackPanel>
     </Grid>
 </Window>
