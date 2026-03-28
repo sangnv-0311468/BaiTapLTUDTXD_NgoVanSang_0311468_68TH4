@@ -1,0 +1,9 @@
+﻿<Application x:Class="BaiTapClass_DuAnMau_ThietKeDam.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BaiTapClass_DuAnMau_ThietKeDam"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
