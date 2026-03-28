@@ -31,6 +31,7 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
 
         #region Khai báo fields 
         private int _id;
+        private string _mark;
         private double _b;
         private double _h;
         private double _a;
@@ -51,6 +52,11 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         {
             get => _id;
             set { _id = value; OnPropertyChanged(); }
+        }
+        public string Mark
+        {
+            get => _mark;
+            set { _mark = value; OnPropertyChanged(); }
         }
         public double b
         {
@@ -132,12 +138,12 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         public BeamViewModel()
         {
             //Khởi tạo danh sách vật liệu bê tông
-            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B20", Rb = 10, Rbt = 0.8, Eb = 3000 });
-            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B25", Rb = 12.5, Rbt = 0.9, Eb = 3500 });
-            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B30", Rb = 13, Rbt = 0.95, Eb = 3500 });
+            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B20", Rb = 11.5, Rbt = 0.9, Eb = 27500 });
+            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B25", Rb = 14.5, Rbt = 1.05, Eb = 30000 });
+            ConcreteMaterialList.Add(new ConcreteMaterialModel { Name = "B30", Rb = 17, Rbt = 1.15, Eb = 32500 });
             //khởi tạo danh sách vật liệu cốt thép
-            RebarMaterialList.Add(new RebarMaterialModel { Name = "CB300-V", Rs = 300, Rsc = 270 });
-            RebarMaterialList.Add(new RebarMaterialModel { Name = "CB400", Rs = 320, Rsc = 280 });
+            RebarMaterialList.Add(new RebarMaterialModel { Name = "CB300-V", Rs = 260, Rsc = 260 });
+            RebarMaterialList.Add(new RebarMaterialModel { Name = "CB400-V", Rs = 350, Rsc = 350 });
             //Khởi tạo Command
             AddBeamCommand = new RelayCommand(AddBeamMethod);
             CalBeamCommand = new RelayCommand(CalBeamMethod);
@@ -146,16 +152,33 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         #region khai báo các  phương thức thực thi command
         private void AddBeamMethod()
         {
-            CurrentBeam.Id = BeamList.Count + 1;
-            CurrentBeam.h0 = CurrentBeam.h - CurrentBeam.a;
-            CurrentBeam.AlphaR = 0.371;
-            CurrentBeam.XiR = 0.493;
-
+            BeamModel _newbeam = new BeamModel(); //khởi tạo 1 đối tượng dầm mới
+                                                  //lấy thông tin  từ viewmodel gán vào _beam
+            _newbeam.Mark = Mark;
+            _newbeam.b = b;
+            _newbeam.h = h;
+            _newbeam.a = a;
+            _newbeam.M = M;
+            _newbeam.ConcreteMaterial = ConcreteMaterial;
+            _newbeam.RebarMaterial = RebarMaterial;
+            _newbeam.Id = BeamList.Count + 1;
+            _newbeam.h0 = _newbeam.h - _newbeam.a;
+            _newbeam.AlphaR = 0.371;
+            _newbeam.XiR = 0.493;
 
             //thêm dầm hiện tại vào danh sách dầm BeamList
-            BeamList.Add(CurrentBeam);
-            ////reset dầm hiện tại để nhập liệu cho dầm tiếp theo
-            //CurrentBeam = new BeamModel();
+            if (BeamList.Any(b => b.Mark == _newbeam.Mark))
+            {
+                //hiển thị thông báo lỗi nếu mã hiệu trùng
+                System.Windows.MessageBox.Show("Mã hiệu dầm đã tồn tại. Vui lòng nhập mã hiệu khác.", "Lỗi", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                //thêm dầm hiện tại vào danh sách dầm BeamList
+                BeamList.Add(_newbeam);
+            }
+           
         }
         private void CalBeamMethod()
         {
