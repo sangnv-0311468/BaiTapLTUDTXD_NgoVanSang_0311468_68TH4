@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 
@@ -140,6 +141,8 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         public ICommand AddBeamCommand { get; }
         public ICommand CalBeamCommand { get; }
 
+        public ICommand RemoveBeamCommand { get; }
+
         //constructor-hàm khởi tạo
         public BeamViewModel()
         {
@@ -153,6 +156,7 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
             //Khởi tạo Command
             AddBeamCommand = new RelayCommand(AddBeamMethod);
             CalBeamCommand = new RelayCommand(CalBeamMethod);
+            RemoveBeamCommand = new RelayCommand(RemoveBeamMethod);
         }
 
         #region khai báo các  phương thức thực thi command
@@ -285,6 +289,27 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
                     beam.BaiToan = "Không thảo mãn";
                 }
 
+            }
+        }
+        private void RemoveBeamMethod()
+        {
+            //dầm đang chọn select trong datagrid là CurrentBeam, nên ta sẽ xóa CurrentBeam khỏi BeamList
+            if (CurrentBeam != null && BeamList.Contains(CurrentBeam))
+            {
+                var result = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn xóa dầm {CurrentBeam.Mark}?",
+                    "Xác nhận",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    BeamList.Remove(CurrentBeam);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn dầm cần xóa trong danh sách.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         #endregion
