@@ -10,6 +10,7 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.Models
     public class BeamModel
     {
         public string Mark { get; set; }  ///Mã hiệu Dầm
+        public string Note { get; set; }  //Ghi chú
         public int Id { get; set; }
         public double b { get; set; } // Chiều rộng của dầm
         public double h { get; set; }

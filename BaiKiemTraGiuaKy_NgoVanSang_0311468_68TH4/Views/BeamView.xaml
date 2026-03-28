@@ -31,29 +31,29 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="5"  >
                         <Label Content="Mã hiệu:"/>
-                        <TextBox x:Name="txtMark" Width="100" Margin="5 0 0 0" Text="{Binding Mark}"/>
+                        <TextBox x:Name="txtMark" Width="100" Margin="15 0 0 0" Text="{Binding Mark}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5"  >
-                        <Label Content="b:"/>
-                        <TextBox x:Name="txtb" Width="100" Margin="40 0 0 0" Text="{Binding b}"/>
+                        <Label Content="b (m):"/>
+                        <TextBox x:Name="txtb" Width="100" Margin="30 0 0 0" Text="{Binding b}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
-                        <Label Content="h:"/>
+                        <Label Content="h (m):"/>
                         <TextBox x:Name="txth" 
                              Text="{Binding h}"
-                             Width="100" Margin="40 0 0 0"/>
+                             Width="100" Margin="30 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
-                        <Label Content="a:"/>
+                        <Label Content="a (m):"/>
                         <TextBox x:Name="txta" 
                              Text="{Binding a}"
-                             Width="100" Margin="40 0 0 0"/>
+                             Width="100" Margin="30 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5" >
-                        <Label Content="M:" ToolTip="Nhập Mômen" />
+                        <Label Content="M(KN/m):" ToolTip="Nhập Mômen" />
                         <TextBox x:Name="txtM"
                              Text="{Binding M}"
-                             Width="100" Margin="35 0 0 0"/>
+                             Width="100" Margin="8 0 0 0"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -109,16 +109,18 @@
               CanUserAddRows="False" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" />
-                <DataGridTextColumn Header="Mã hiệu" Binding="{Binding Mark}" />
-                <DataGridTextColumn Header="b" Binding="{Binding b}" />
+                <DataGridTextColumn Header="Mã hiệu" Binding="{Binding Mark}" Width="60" />
+                <DataGridTextColumn Header="b" Binding="{Binding b}"  />
                 <DataGridTextColumn Header="h" Binding="{Binding h }" />
                 <DataGridTextColumn Header="a" Binding="{Binding a}" />
                 <DataGridTextColumn Header="h0" Binding="{Binding h0}" />
                 <DataGridTextColumn Header="M (m)" Binding="{Binding M}" />
                 <DataGridTextColumn Header="Aₛ (cm²)" Binding="{Binding As, StringFormat=N2}" />
-                <DataGridTextColumn Header="Alpha_m (m)" Binding="{Binding AlphaM}" />
-                <DataGridTextColumn Header="Alpha_r (m)" Binding="{Binding AlphaR}" />
-                <DataGridTextColumn Header="Bài toán (m)" Binding="{Binding BaiToan}" />
+                <DataGridTextColumn Header="Alpha_M (m)" Binding="{Binding AlphaM, StringFormat=N5}" />
+                <DataGridTextColumn Header="Alpha_R (m)" Binding="{Binding AlphaR}" />
+                <DataGridTextColumn Header="Bài toán" Binding="{Binding BaiToan}" />
+                <DataGridTextColumn Header="Note" Binding="{Binding Note}" />
+
             </DataGrid.Columns>
             <!--Dùng DataTrigger-->
             <DataGrid.RowStyle>

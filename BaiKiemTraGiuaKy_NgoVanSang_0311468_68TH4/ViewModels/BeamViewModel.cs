@@ -32,6 +32,7 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         #region Khai báo fields 
         private int _id;
         private string _mark;
+        private string _note;
         private double _b;
         private double _h;
         private double _a;
@@ -57,6 +58,11 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
         {
             get => _mark;
             set { _mark = value; OnPropertyChanged(); }
+        }
+        public string Note
+        {
+            get => _note;
+            set { _note = value; OnPropertyChanged(); }
         }
         public double b
         {
@@ -194,10 +200,92 @@ namespace BaiKiemTraGiuaKy_NgoVanSang_0311468_68TH4.ViewModels
 
         private void TinhToanAs(BeamModel beam)  //xem sơ đồ khối rồi mình code theo thuật toán
         {
-            //đây chỉ code test ví dụ thôi
-            double As = (beam.M * 1e6) / (beam.RebarMaterial.Rs * beam.h0);
-            beam.As = As;
-            beam.BaiToan = "Cốt đơn";
+            //Đơn vị KN-m
+            //1.Input - đầu vào
+            double b = beam.b;
+            double a = beam.a;
+            double h = beam.h;
+            double M = beam.M;
+            double Rb = beam.ConcreteMaterial.Rb;
+            double Rs = beam.RebarMaterial.Rs;
+            double Rsc = beam.RebarMaterial.Rsc;
+
+            double mu_min = 0.1;//%
+            //2.Output đầu ra
+            double As = 0;
+            double a1 = a; // Giả sử a' = a
+            double As1 = 0;  // As' tính toán cốt kép
+            double Mu = 0; 
+            string Note = "";
+            string BaiToan = "";
+
+            //3. Process - xử lýmpa to kn/m
+            double AlphaR = 0.371;
+            double XiR = 0.493;
+            double h0 = h - a;
+
+            //tính alphaM  KNm / MPa * m*m*m
+            //quy đổi từ đơn vị 1 MPa =  1000 KN/ m2 
+            // KN*m /(KN/m2 * m * m * m) = KN*m / (KN*m) = 1
+            double AlphaM = M / (1000 * Rb * b * h0 * h0);
+            // kiểm tra alphaM có nhỏ hơn alphaR không? 
+            if (AlphaM <= AlphaR) //cốt đơn
+            {
+                //tính xi
+                double Xi = 0.5 * (1 + Math.Sqrt(1 - 2 * AlphaM));
+                //tính As 
+                As = M / (1000 * Rs * Xi * h0);
+                Mu = 100 * As / (b * h0); //%
+                //kiểm hàm lượng cốt thép tối thiểu
+                if (Mu <= mu_min)
+                {
+                    beam.Note = "Mu <= Mu_min";
+                    beam.AlphaM = AlphaM;
+                    beam.As = As * 1e4; //m2 = 10000 cm2
+                    beam.Mu = Mu;
+                    beam.BaiToan = "Cốt đơn";
+                }
+                else
+                {
+                    //lưu dữ liệu tính toán
+                    beam.AlphaM = AlphaM;
+                    beam.As = As * 1e4; //m2 = 10000 cm2
+                    beam.Mu = Mu;
+                    beam.BaiToan = "Cốt đơn";
+                    beam.Note = "Mu > Mu_min";
+                }
+            }
+            else
+            {
+                As1 = (M - AlphaR * Rb * b * h0 * h0) / Rsc * (h0 - a1); //tính As' cốt kép
+                As = ((XiR * Rb) / (Rs * h0)) + (Rsc * As1) / (Rs);
+                Mu = 100 * As / (b * h0); //%
+                if (AlphaM <= 0.5) //bài toán = cốt kép
+                {
+                    
+                    if (Mu <= mu_min)
+                    {
+                        beam.AlphaM = AlphaM;
+                        beam.As = As * 1e4; //m2 = 10000 cm2
+                        beam.Mu = Mu;
+                        beam.BaiToan = "Cốt kép";
+                        beam.Note = "Mu <= Mu_min";
+                    }
+                    else
+                    {
+                        beam.AlphaM = AlphaM;
+                        beam.As = As * 1e4; //m2 = 10000 cm2
+                        beam.Mu = Mu;
+                        beam.BaiToan = "Cốt kép";
+                        
+                    }
+                }
+                else  //bài toán = không thảo mãn 
+                {
+                    beam.BaiToan = "Không thảo mãn";
+                }
+
+            }
         }
         #endregion
     }
