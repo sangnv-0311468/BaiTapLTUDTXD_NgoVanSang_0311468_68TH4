@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaiTapClass_DuAnMau_ThietKeDam.Models
 {
-    public class Beam
+    public class BeamModel
     {
         #region Fields
         private string _id;
@@ -61,7 +61,7 @@ namespace BaiTapClass_DuAnMau_ThietKeDam.Models
         }
 
         //constructor - hàm khởi tạo
-        Beam(string id, string mark, string story)
+        BeamModel(string id, string mark, string story)
         {
             _id = id;
             _mark = mark;

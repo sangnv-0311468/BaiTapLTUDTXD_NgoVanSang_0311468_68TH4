@@ -62,7 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Beam.cs" />
+    <Compile Include="Models\BeamModel.cs" />
     <Compile Include="Models\EtabsAPI_Frame.cs" />
     <Compile Include="Models\EtabsAPI_FrameForce.cs" />
     <Compile Include="Views\UserControls\UserMain.xaml.cs">
@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Views\UserControls\UserStatus.xaml.cs">
       <DependentUpon>UserStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\View\BeamView.xaml.cs">
+      <DependentUpon>BeamView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\UserStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\View\BeamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
