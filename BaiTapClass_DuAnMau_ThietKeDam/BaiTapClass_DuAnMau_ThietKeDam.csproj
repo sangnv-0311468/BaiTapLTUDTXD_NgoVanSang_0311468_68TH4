@@ -65,6 +65,7 @@
     <Compile Include="Models\BeamModel.cs" />
     <Compile Include="Models\EtabsAPI_Frame.cs" />
     <Compile Include="Models\EtabsAPI_FrameForce.cs" />
+    <Compile Include="Models\EtabsAPI_PropFrame.cs" />
     <Compile Include="Views\UserControls\UserMain.xaml.cs">
       <DependentUpon>UserMain.xaml</DependentUpon>
     </Compile>
