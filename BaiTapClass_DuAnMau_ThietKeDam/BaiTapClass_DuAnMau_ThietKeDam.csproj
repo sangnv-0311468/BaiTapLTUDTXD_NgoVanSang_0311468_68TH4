@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSiAPIv1">
+      <HintPath>..\..\..\..\..\..\Program Files\Computers and Structures\ETABS 22\CSiAPIv1.dll</HintPath>
+    </Reference>
+    <Reference Include="ETABSv1">
+      <HintPath>..\..\..\..\..\..\Program Files\Computers and Structures\ETABS 22\ETABSv1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +62,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Beam.cs" />
+    <Compile Include="Models\EtabsAPI_Frame.cs" />
+    <Compile Include="Models\EtabsAPI_FrameForce.cs" />
+    <Compile Include="Views\UserControls\UserMain.xaml.cs">
+      <DependentUpon>UserMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\UserMenu.xaml.cs">
+      <DependentUpon>UserMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\UserStatus.xaml.cs">
+      <DependentUpon>UserStatus.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +86,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserControls\UserMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UserStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +124,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\Add Link.png" />
+    <Resource Include="Assets\Icons\addfile.png" />
+    <Resource Include="Assets\Icons\Bookmark.png" />
+    <Resource Include="Assets\Icons\Check Mark.png" />
+    <Resource Include="Assets\Icons\Cut_16px.png" />
+    <Resource Include="Assets\Icons\Cut_32px.png" />
+    <Resource Include="Assets\Icons\Delete.png" />
+    <Resource Include="Assets\Icons\Download from the Cloud.png" />
+    <Resource Include="Assets\Icons\excel.png" />
+    <Resource Include="Assets\Icons\in.png" />
+    <Resource Include="Assets\Icons\Left Arrow.png" />
+    <Resource Include="Assets\Icons\oppenfile.png" />
+    <Resource Include="Assets\Icons\Paste.png" />
+    <Resource Include="Assets\Icons\pdf.png" />
+    <Resource Include="Assets\Icons\Query Inner Join Right.png" />
+    <Resource Include="Assets\Icons\Right Arrow.png" />
+    <Resource Include="Assets\Icons\save.png" />
+    <Resource Include="Assets\Icons\Share.png" />
+    <Resource Include="Assets\Icons\vatlieu.png" />
+    <Resource Include="Assets\Icons\word.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
