@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 namespace BaiTapClass_DuAnMau_ThietKeDam.Views.View
 {
     /// <summary>
-    /// Interaction logic for BeamView.xaml
+    /// Interaction logic for EtabsAPI_FramesView.xaml
     /// </summary>
-    public partial class BeamView : Window
+    public partial class EtabsAPI_FramesView : Window
     {
-        public BeamView()
+        public EtabsAPI_FramesView()
         {
             InitializeComponent();
+            int numberOfFrames = dtg.Items.Count;
         }
     }
 }

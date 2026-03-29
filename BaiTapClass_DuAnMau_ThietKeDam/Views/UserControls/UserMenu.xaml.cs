@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BaiTapClass_DuAnMau_ThietKeDam.Views.View;
+using System;
+using ETABSv1;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,38 @@ namespace BaiTapClass_DuAnMau_ThietKeDam.Views.UserControls
         public UserMenu()
         {
             InitializeComponent();
+        }
+
+        private void rbt_Dam_Click(object sender, RoutedEventArgs e)
+        {
+            EtabsAPI_FramesView framesView = new EtabsAPI_FramesView();
+            framesView.Show();
+        }
+        private cOAPI _etabsObject;
+        private cSapModel _sapModel;
+
+        private void rbt_Etabs_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                cHelper helper = new Helper();
+
+                _etabsObject = helper.GetObject("CSI.ETABS.API.ETABSObject");
+
+                if (_etabsObject == null)
+                {
+                    MessageBox.Show("Không tìm thấy ETABS đang mở!");
+                    return;
+                }
+
+                _sapModel = _etabsObject.SapModel;
+
+                MessageBox.Show("Kết nối ETABS thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
         }
     }
 }

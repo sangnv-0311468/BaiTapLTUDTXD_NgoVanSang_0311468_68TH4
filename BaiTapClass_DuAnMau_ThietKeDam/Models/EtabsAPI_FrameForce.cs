@@ -11,7 +11,7 @@ namespace BaiTapClass_DuAnMau_ThietKeDam.Models
     {
         // Thông tin định danh
         public string Name { get; set; }
-        public eItemTypeElm ItemTypeElm { get; set; }
+        public eItemTypeElm ItemTypeElm { get; set; } = new eItemTypeElm();
         public int NumberResults { get; set; }
 
         // Thông tin vị trí phần tử

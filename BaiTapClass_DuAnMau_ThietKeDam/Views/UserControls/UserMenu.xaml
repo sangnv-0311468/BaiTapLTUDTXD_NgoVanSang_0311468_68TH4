@@ -25,7 +25,7 @@
             </RibbonTab>
             <RibbonTab Header="Dữ Liệu">
                 <RibbonGroup Header="Etabs">
-                    <RibbonButton Label="Etabs" LargeImageSource="/Assets/Icons/Add Link.png"/>
+                    <RibbonButton Label="Etabs" LargeImageSource="/Assets/Icons/Add Link.png" Click="rbt_Etabs_Click"/>
                 </RibbonGroup>
 
                 <RibbonGroup >
@@ -42,7 +42,7 @@
 
             <RibbonTab Header="Thiết kế">
                 <RibbonGroup >
-                    <RibbonButton Label="Dầm" LargeImageSource="/Assets/Icons/Add Link.png"/>
+                    <RibbonButton Label="Dầm" LargeImageSource="/Assets/Icons/Add Link.png" Click="rbt_Dam_Click"/>
                 </RibbonGroup>
 
                 <RibbonGroup Header="Kiểm tra" >

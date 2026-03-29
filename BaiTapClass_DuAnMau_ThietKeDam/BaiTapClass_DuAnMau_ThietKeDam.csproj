@@ -66,6 +66,9 @@
     <Compile Include="Models\EtabsAPI_Frame.cs" />
     <Compile Include="Models\EtabsAPI_FrameForce.cs" />
     <Compile Include="Models\EtabsAPI_PropFrame.cs" />
+    <Compile Include="ViewModels\BeamViewModel.cs" />
+    <Compile Include="ViewModels\EtabsAPI_FramesViewmodel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\UserControls\UserMain.xaml.cs">
       <DependentUpon>UserMain.xaml</DependentUpon>
     </Compile>
@@ -75,8 +78,8 @@
     <Compile Include="Views\UserControls\UserStatus.xaml.cs">
       <DependentUpon>UserStatus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\View\BeamView.xaml.cs">
-      <DependentUpon>BeamView.xaml</DependentUpon>
+    <Compile Include="Views\View\EtabsAPI_FramesView.xaml.cs">
+      <DependentUpon>EtabsAPI_FramesView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\View\BeamView.xaml">
+    <Page Include="Views\View\EtabsAPI_FramesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,7 +137,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
   <ItemGroup>
