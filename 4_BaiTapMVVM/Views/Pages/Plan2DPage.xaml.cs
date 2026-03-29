@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace _4_BaiTapMVVM.Views.Pages
@@ -17,7 +18,7 @@ namespace _4_BaiTapMVVM.Views.Pages
     /// <summary>
     /// Interaction logic for Plan2DPage.xaml
     /// </summary>
-    public partial class Plan2DPage : Window
+    public partial class Plan2DPage : Page
     {
         public Plan2DPage()
         {

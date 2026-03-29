@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _4_BaiTapMVVM.Models
 {
-    internal class EtabsAPI_FrameForce
+    public class EtabsAPI_FrameForce
     {
     }
 }

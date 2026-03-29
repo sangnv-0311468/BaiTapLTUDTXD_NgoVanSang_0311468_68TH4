@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _4_BaiTapMVVM.Views
+namespace _4_BaiTapMVVM.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for EtabsAPI_FramesView.xaml
+    /// Interaction logic for HomePage.xaml
     /// </summary>
-    public partial class EtabsAPI_FramesView : Window
+    public partial class HomePage : Page
     {
-        public EtabsAPI_FramesView()
+        public HomePage()
         {
             InitializeComponent();
-            int numberOfFrames = dtg.Items.Count;
         }
     }
 }

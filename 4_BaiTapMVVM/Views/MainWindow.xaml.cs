@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _4_BaiTapMVVM.Views.Pages;
+using _4_BaiTapMVVM.Views.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,12 @@ namespace _4_BaiTapMVVM
         public MainWindow()
         {
             InitializeComponent();
+
+            //khởi tạo UserControl Ribbon
+            UC_Ribbon uc_Ribbon = new UC_Ribbon(MainFrame);
+            Panel0.Children.Add(uc_Ribbon);
+            //load home page
+            MainFrame.Content = new HomePage();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _4_BaiTapMVVM.Views.Pages;
+using System;
+using ETABSv1;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,55 @@ namespace _4_BaiTapMVVM.Views.UserControls
     /// </summary>
     public partial class UC_Ribbon : UserControl
     {
-        public UC_Ribbon()
+        //khai báo biến 
+        private Frame Mainframe;
+        public UC_Ribbon(Frame mainFrame)
         {
             InitializeComponent();
+            this.Mainframe = mainFrame;
+        }
+
+        private void rbt_2Dplan_Click(object sender, RoutedEventArgs e)
+        {
+            Mainframe.Content = new Plan2DPage();
+        }
+
+        private void rbt_Beams_Click(object sender, RoutedEventArgs e)
+        {
+            BeamView BeamView = new BeamView();
+            BeamView.Show();
+        }
+
+        private void rbt_Frames_Click(object sender, RoutedEventArgs e)
+        {
+            EtabsAPI_FramesView EtabsFramesView = new EtabsAPI_FramesView();
+            EtabsFramesView.Show();
+        }
+        // biến ETABS
+        private cOAPI _etabsObject;
+        private cSapModel _sapModel;
+        private void rbt_ConnectEtabs_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                cHelper helper = new Helper();
+
+                _etabsObject = helper.GetObject("CSI.ETABS.API.ETABSObject");
+
+                if (_etabsObject == null)
+                {
+                    MessageBox.Show("Không tìm thấy ETABS đang mở!");
+                    return;
+                }
+
+                _sapModel = _etabsObject.SapModel;
+
+                MessageBox.Show("Kết nối ETABS thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
         }
     }
 }

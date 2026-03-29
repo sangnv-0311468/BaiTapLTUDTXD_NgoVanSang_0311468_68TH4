@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_4_BaiTapMVVM.Views"
+        xmlns:framesviewmodel="clr-namespace:_4_BaiTapMVVM.ViewModels"
         mc:Ignorable="d"
-        Title="EtabsAPI_FramesView" Height="450" Width="800">
+           Title="EtabsAPI_FramesView" Height="450" Width="800">
+    <Window.DataContext>
+        <framesviewmodel:EtabsAPI_FramesViewmodel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dtg" Grid.Row="0" ItemsSource="{Binding EtabsFrames}" AutoGenerateColumns="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding MyName}" Width="Auto"/>
+                <DataGridTextColumn Header="Label" Binding="{Binding Label}" Width="Auto"/>
+                <DataGridTextColumn Header="Section" Binding="{Binding PropName}" Width="Auto"/>
+                <DataGridTextColumn Header="StoryName" Binding="{Binding StoryName}" Width="Auto"/>
+                <DataGridTextColumn Header="Length" Binding="{Binding Length}" Width="Auto"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
