@@ -1,0 +1,44 @@
+﻿<Window x:Class="Bai2_TaoMenuRibbon_Usercontrol_Pages.Views.Vatlieudaicoc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bai2_TaoMenuRibbon_Usercontrol_Pages.Views"
+        mc:Ignorable="d"
+           Title="VẬT LIỆU ĐÀI CỌC" Height="200" Width="200">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Mác bê tông" Padding="5,0,0,2" Width="90"/>
+                <ComboBox x:Name="CboBeTong1" Height="25" Width="75">
+                    <ComboBoxItem Content="B20" IsSelected="True"/>
+                    <ComboBoxItem Content="B25" />
+                    <ComboBoxItem Content="B30" />
+                    <ComboBoxItem Content="B35" />
+                    <ComboBoxItem Content="B40" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Margin="0,5">
+                <Label Content="Thép dọc" Padding="5,0,0,2" Width="90"/>
+                <ComboBox x:Name="CbThepDoc">
+                    <ComboBoxItem Content="CB300-V" IsSelected="True"/>
+                    <ComboBoxItem Content="CB400-V" />
+                    <ComboBoxItem Content="CB500-V" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Thép đai" Padding="5,0,0,2" Width="90"/>
+                <ComboBox x:Name="CbThepDai">
+                    <ComboBoxItem Content="CB240-T" IsSelected="True"/>
+                    <ComboBoxItem Content="CB300-T" />
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="btn_XNDaiCoc" Content="Xác nhận" 
+          Width="80" Height="30" 
+          Margin="0,10,0,0" 
+          HorizontalAlignment="Center" Click="btn_XNDaiCoc_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

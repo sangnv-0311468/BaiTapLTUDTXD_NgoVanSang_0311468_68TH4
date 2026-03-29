@@ -1,0 +1,59 @@
+﻿<Window x:Class="Bai2_TaoMenuRibbon_Usercontrol_Pages.Views.Vatlieucoc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bai2_TaoMenuRibbon_Usercontrol_Pages.Views"
+        mc:Ignorable="d"
+           Title="Vật Liệu cọc" Height="225" Width="225">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Tiết diện cọc" Padding="5,0,0,5" Width="100"/>
+                <ComboBox x:Name="CboTietDien" Height="25" Width="75">
+                    <ComboBoxItem Content="25x25" IsSelected="True"/>
+                    <ComboBoxItem Content="30x30" />
+                    <ComboBoxItem Content="35x35" />
+                    <ComboBoxItem Content="40x40" />
+                    <ComboBoxItem Content="45x45" />
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Mác bê tông" Padding="5,0,0,2" Width="100"/>
+                <ComboBox x:Name="Cbo_BeTong2" Height="25" Width="75">
+                    <ComboBoxItem Content="B20" IsSelected="True"/>
+                    <ComboBoxItem Content="B25" />
+                    <ComboBoxItem Content="B30" />
+                    <ComboBoxItem Content="B35" />
+                    <ComboBoxItem Content="B40" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Margin="0,5">
+                <Label Content="Thép chịu lực" Padding="5,0,0,2" Width="100"/>
+                <ComboBox x:Name="Cb_ThepChiuLuc" Width="75">
+                    <ComboBoxItem Content="CB300-V" IsSelected="True"/>
+                    <ComboBoxItem Content="CB400-V" />
+                    <ComboBoxItem Content="CB500-V" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Label Content="Đường Kính thép" Padding="5,0,0,2" Width="100"/>
+                <ComboBox x:Name="Cb_DKthep" Width="75">
+                    <ComboBoxItem Content="8" IsSelected="True"/>
+                    <ComboBoxItem Content="10" />
+                    <ComboBoxItem Content="12" />
+                    <ComboBoxItem Content="14" />
+                    <ComboBoxItem Content="16" />
+                    <ComboBoxItem Content="18" />
+                    <ComboBoxItem Content="20" />
+                    <ComboBoxItem Content="22" />
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="btn_XNCOC" Content="Xác nhận" 
+        Width="80" Height="30" 
+        Margin="0,10,0,0" 
+        HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>
